@@ -1,4 +1,4 @@
-# MJJ扫域名脚本
+# A1/A1P扫域名脚本
 ## 功能
 - 自动分离域名, 并判断
 - 自动验证域名可以用作干什么
@@ -82,3 +82,23 @@ A1 域名会保存在目录下的 domain_A1.txt 里
 A1P 域名会保存在目录下的 domain_A1P.txt 里
 
 没什么想说的了, 想到了再补充
+## 步骤
+
+1. 安装 tor
+apt-get install tor
+service tor status
+
+2. 下载项目并安装依赖
+yum install git && git clone https://github.com/geuomao/WAEQySRL64fXpNGL && cd WAEQySRL64fXpNGL
+yum install python-pip && pip install stem pySocket requests beautifulsoup4
+
+3. 报错处理 1
+stem.SocketError: [Errno 111] Connection refused
+vim /etc/tor/torrc
+ControlPort 9151
+SocksPort 9150
+service tor restart
+
+4. 报错处理 2
+ImportError: No module named socks
+pip install PySocks && sudo apt-get install python-socks
